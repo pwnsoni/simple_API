@@ -1,6 +1,5 @@
 require('dotenv').config()
 
-const { doesNotMatch } = require('assert');
 const { MongoClient } = require('mongodb');
 
 const url = process.env.DB_URI;
@@ -29,7 +28,6 @@ const db_functions = {
         try {
             const collection = db.collection(collection_name);
             const findResults = await collection.find({}).toArray();
-            console.log("here", findResults)
             console.log('Found documents =>', findResults.length);
             return {results: findResults, status: 200}
         } catch (error) {
@@ -39,11 +37,10 @@ const db_functions = {
     },
 
     add_to_DB: async (db, data) => {
-        console.log(data)
         try {
             const collection = db.collection(collection_name);
             const insertResult = await collection.insertOne(data);
-            console.log('Inserted documents =>', insertResult);
+            console.log('Inserted documents');
             return {status: 200}
         } catch (error) {
             console.log(`Some error occured ${error}`)
