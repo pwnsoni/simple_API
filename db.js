@@ -9,6 +9,7 @@ const collection_name = process.env.COLLECTION_NAME
 
 
 
+// Can make this better by modifying it a bit so that the db connection is reused.
 
 const connect_to_db = async function connect_to_DB() {
   // Use connect method to connect to the server

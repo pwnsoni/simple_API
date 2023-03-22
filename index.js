@@ -30,6 +30,7 @@ app.get("/users", async (req, res) => {
     }
 })
 
+// Can be refactored a bit and can use middleware to validate and encrypt the data 
 app.post("/users", async (req, res) => {
     let user = encryptFunctions.encryptobject({
         "fullName": req.body.fullName,
@@ -54,3 +55,5 @@ app.listen(port, async (err) => {
     }
 })
 
+// exported for testing purpose
+module.exports = app
